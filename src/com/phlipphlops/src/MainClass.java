@@ -12,6 +12,7 @@ public class MainClass {
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.add(new Game());
         frame.setVisible(true);
 
     }
