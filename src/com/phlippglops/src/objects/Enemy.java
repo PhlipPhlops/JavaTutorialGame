@@ -30,6 +30,10 @@ public class Enemy extends GlobalPosition {
         g2d.drawImage(getEnemyImage(), x, y, null);
     }
 
+    public Rectangle getBounds() {
+        return new Rectangle(x, y, 32, 32);
+    }
+
     public Image getEnemyImage() {
         ImageIcon i = new ImageIcon(getClass().getResource(image));
         return i.getImage();

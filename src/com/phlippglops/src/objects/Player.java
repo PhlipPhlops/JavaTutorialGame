@@ -1,11 +1,14 @@
 package com.phlippglops.src.objects;
 
 import com.phlipphlops.src.GlobalPosition;
+import com.phlipphlops.src.input.Controller;
+import org.w3c.dom.css.Rect;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.security.Key;
+import java.util.LinkedList;
 
 public class Player extends GlobalPosition {
 
@@ -13,6 +16,8 @@ public class Player extends GlobalPosition {
 
     int velX = 0;
     int velY = 0;
+
+    private LinkedList<Enemy> e = Controller.getEnemyBounds();
 
     public Player(int x, int y) {
         super(x, y);
@@ -34,6 +39,23 @@ public class Player extends GlobalPosition {
         if (y > 448) {
             y = 448;
         }
+
+        Collision();
+    }
+
+    public void Collision() {
+
+        for (int i = 0; i < e.size(); i++) {
+
+            if (getBounds().intersects(e.get(i).getBounds())) {
+
+                System.out.println("COLLISION");
+            }
+        }
+    }
+
+    public Rectangle getBounds() {
+        return new Rectangle(x, y, 32, 32);
     }
 
     public void draw(Graphics2D g2d) {
